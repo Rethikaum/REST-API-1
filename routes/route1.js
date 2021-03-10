@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const Model = require('../models/model1')
+const table = require('../models/model1')
 
 router.get('/', async(req, res) => {
     try {
-        const values = await Model.find()
+        const values = await table.find()
         res.json(values)
     } catch (err) {
         res.send('Error ' + err)
