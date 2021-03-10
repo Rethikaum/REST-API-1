@@ -38,7 +38,7 @@ router.post('/', async(req, res) => {
 router.patch('/:id', async(req, res) => {
     try {
         const value = await Example.findById(req.params.id)
-        value.sub = req.body.sub
+        value.name = req.body.name
         const a1 = await value.save()
         res.json(a1)
     } catch (err) {
