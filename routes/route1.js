@@ -39,6 +39,7 @@ router.patch('/:id', async(req, res) => {
     try {
         const value = await Example.findById(req.params.id)
         value.name = req.body.name
+        value.age = req.body.age
         const a1 = await value.save()
         res.json(a1)
     } catch (err) {
