@@ -13,7 +13,7 @@ router.get('/', async(req, res) => {
 
 router.get('/:id', async(req, res) => {
     try {
-        const value = await Model.findById(req.params.id)
+        const value = await table.findById(req.params.id)
         res.json(value)
     } catch (err) {
         res.send('Error ' + err)
@@ -22,7 +22,7 @@ router.get('/:id', async(req, res) => {
 
 
 router.post('/', async(req, res) => {
-    const values = new Model({
+    const values = new table({
         name: req.body.name,
         age: req.body.age
     })
@@ -37,7 +37,7 @@ router.post('/', async(req, res) => {
 
 router.patch('/:id', async(req, res) => {
     try {
-        const value = await Model.findById(req.params.id)
+        const value = await table.findById(req.params.id)
         value.sub = req.body.sub
         const a1 = await value.save()
         res.json(a1)
@@ -48,7 +48,7 @@ router.patch('/:id', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
     try {
-        const value = await Model.findById(req.params.id)
+        const value = await table.findById(req.params.id)
         value.sub = req.body.sub
         const a1 = await value.remove()
         res.json(a1)
