@@ -14,4 +14,4 @@ const alienSchema = new mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('table', alienSchema)
+module.exports = mongoose.model('Example', alienSchema)
