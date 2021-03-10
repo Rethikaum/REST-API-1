@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const table = require('../models/model1')
+const Example = require('../models/model1')
 
 router.get('/', async(req, res) => {
     try {
-        const values = await table.find()
+        const values = await Example.find()
         res.json(values)
     } catch (err) {
         res.send('Error ' + err)
@@ -13,7 +13,7 @@ router.get('/', async(req, res) => {
 
 router.get('/:id', async(req, res) => {
     try {
-        const value = await table.findById(req.params.id)
+        const value = await Example.findById(req.params.id)
         res.json(value)
     } catch (err) {
         res.send('Error ' + err)
@@ -22,7 +22,7 @@ router.get('/:id', async(req, res) => {
 
 
 router.post('/', async(req, res) => {
-    const values = new table({
+    const values = new Example({
         name: req.body.name,
         age: req.body.age
     })
@@ -37,7 +37,7 @@ router.post('/', async(req, res) => {
 
 router.patch('/:id', async(req, res) => {
     try {
-        const value = await table.findById(req.params.id)
+        const value = await Example.findById(req.params.id)
         value.sub = req.body.sub
         const a1 = await value.save()
         res.json(a1)
@@ -48,7 +48,7 @@ router.patch('/:id', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
     try {
-        const value = await table.findById(req.params.id)
+        const value = await Example.findById(req.params.id)
         value.sub = req.body.sub
         const a1 = await value.remove()
         res.json(a1)
